@@ -26,17 +26,13 @@ class BalanceService:
             user_balance_list = user_balance_list["data"]["items"]
 
         file_name_parts = file_name.split("_")
-        if file_name_parts[1] == "lp":
-            field_names = FILE_FIELD_NAMES["_".join(file_name_parts[:3])]
-        else:
-            field_names = FILE_FIELD_NAMES["_".join(file_name_parts[:2])]
-        # TODO: change 4 lines above to: field_names = FILE_FIELD_NAMES["_".join(file_name_parts[:2])]
+        field_names = FILE_FIELD_NAMES["_".join(file_name_parts[:2])]
 
 
         index = 0
         for user_balance in user_balance_list:
-            if index == 10:
-                break
+            # if index == 10:
+            #     break
 
             address = user_balance[field_names["address"]].strip()
             if file_name_parts[1] == "staking":
@@ -57,13 +53,13 @@ class BalanceService:
 
             balance = self.convert_balance(balance, network)
             stake = self.convert_balance(stake, network)
-            print(f"{self.id}, {network}, {address}, {stake_key}, {balance}, {stake}")
-            # self.repo.add_user_balance(network, address, balance, stake, stake_key)
+            # print(f"{self.id}, {network}, {address}, {stake_key}, {balance}, {stake}")
+            self.repo.add_user_balance(network, address, balance, stake, stake_key)
 
-            index += 1
+            # index += 1
             self.id += 1
 
-        print()
+        # print()
 
     def convert_balance(self, balance_str: str, network: str) -> int:
         if balance_str.find(",") != -1:
@@ -75,8 +71,7 @@ class BalanceService:
         return int(balance_str)
 
     def convert_ethereum_balance(self, balance, network: str) -> int:
-
-        decimals = DECIMALS["AGIX"][network]
+        decimals = DECIMALS["FET"][network]
         integer, _, decimal = balance.partition(".")
         return int(integer.replace(",", "")) * 10 ** decimals + int(decimal + ("0" * (decimals - len(decimal))))
 

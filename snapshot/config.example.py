@@ -79,16 +79,11 @@ SNAPSHOT_TABLES = {
 original_fields_names = ["address", "balance"]
 FILE_FIELD_NAMES = {
     "cardano_balances": dict(zip(original_fields_names + ["stake_key"], ["address", "quantity", "stake_key"])),
-    "ethereum_balances": dict(zip(original_fields_names + ["pending_balance"], ["HolderAddress", "Balance", "PendingBalanceUpdate"])),
-    # TODO: change a line above to: "ethereum_balances": dict(zip(original_fields_names, original_fields_names)),
+    "ethereum_balances": dict(zip(original_fields_names, original_fields_names)),
     "binance_balances": dict(zip(original_fields_names + ["pending_balance"], ["HolderAddress", "Balance", "PendingBalanceUpdate"])),
-    "ethereum_lp_uniswap": dict(zip(original_fields_names, original_fields_names)),
-    "ethereum_lp_uniswap3": dict(zip(original_fields_names, ["address", "amount"])),
-    # TODO: commit two lines above
     "ethereum_lp": dict(zip(original_fields_names, ["address", "token0"])),
     "binance_lp": dict(zip(original_fields_names, ["address", "token0"])),
-    "cardano_lp_minswap": dict(zip(original_fields_names + ["stake_key"], ["payment_address", "amount_agix", "stake_address"])),
-    # TODO: change a line above to: "cardano_lp": dict(zip(original_fields_names + ["stake_key"], ["payment_address", "amount_agix", "stake_address"])),
+    "cardano_lp": dict(zip(original_fields_names + ["stake_key"], ["payment_address", "amount_agix", "stake_address"])),
     "ethereum_staking": dict(zip(original_fields_names, ["address", "balance"])),
     "cardano_staking": dict(zip(original_fields_names + ["stake_key"], original_fields_names + ["stake_key"])),
 }
