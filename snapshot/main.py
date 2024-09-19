@@ -28,7 +28,7 @@ def main_func():
 
 
 def test_func():
-    with open('files/cardano_lp_minswap_20240610.csv', 'r') as f:
+    with open('old_files/cardano_lp_minswap_20240610.csv', 'r') as f:
         reader = list(map(dict, csv.DictReader(f)))
 
     index = 0
@@ -38,7 +38,7 @@ def test_func():
         if index == 100:
             break
 
-    with open('files/cardano_staking_20240610.json', 'r') as f:
+    with open('old_files/cardano_staking_20240610.json', 'r') as f:
         reader = json.load(f)
 
     index = 0

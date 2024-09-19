@@ -14,11 +14,12 @@ class BalanceSnapshotRepository(BaseRepository):
 
         user_balance = self.get_user_balance(network, address)
         if user_balance:
+            print(f"Updating balance: {network}, {address}, {balance}, {stake}, {stake_key}")
             user_balance.balance += balance
             user_balance.stake += stake
             if stake_key:
                 user_balance.stake_key = stake_key
-
+        else:
             user_balance = Balances(network=network,
                                     address=address,
                                     balance=balance,

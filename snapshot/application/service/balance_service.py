@@ -17,19 +17,15 @@ class CSVSave:
 
 class BalanceService:
     def __init__(self):
-        # self.id = 0
+        self.amount = 0
         self.repo = BalanceSnapshotRepository()
         # print("id, network, address, stake_key, balance, stake")
 
     def save_to_db(self, user_balance_list, file_name):
         print(file_name)
 
-        if file_name.startswith("cardano_balances"):
-            user_balance_list = user_balance_list["data"]["items"]
-
         file_name_parts = file_name.split("_")
         field_names = FILE_FIELD_NAMES["_".join(file_name_parts[:2])]
-
 
         index = 0
         for user_balance in user_balance_list:
@@ -59,10 +55,12 @@ class BalanceService:
             self.repo.add_user_balance(network, address, balance, stake, stake_key)
 
             # index += 1
-            # self.id += 1
+            self.amount += 1
 
         self.repo.commit()
         # print()
+        print(f"Saved {self.amount} records", end="\n\n")
+        self.amount = 0
 
     def convert_balance(self, balance_str: str, network: str) -> int:
         if balance_str.find(",") != -1:
