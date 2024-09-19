@@ -78,7 +78,7 @@ SNAPSHOT_TABLES = {
 
 original_fields_names = ["address", "balance"]
 FILE_FIELD_NAMES = {
-    "cardano_balances": dict(zip(original_fields_names + ["stake_key"], ["address", "quantity", "stake_key"])),
+    "cardano_balances": dict(zip(original_fields_names + ["stake_key"], original_fields_names + ["stake_key"])),
     "ethereum_balances": dict(zip(original_fields_names, original_fields_names)),
     "binance_balances": dict(zip(original_fields_names + ["pending_balance"], ["HolderAddress", "Balance", "PendingBalanceUpdate"])),
     "ethereum_lp": dict(zip(original_fields_names, ["address", "token0"])),
