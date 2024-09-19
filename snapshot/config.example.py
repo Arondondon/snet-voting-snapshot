@@ -73,19 +73,19 @@ DB_CONFIG = {
 }
 
 SNAPSHOT_TABLES = {
-    "BALANCES": f"balance_snapshot_{DATESTAMP}",
+    "BALANCES": f"FET_balance_snapshot_{DATESTAMP}",
 }
 
 original_fields_names = ["address", "balance"]
 FILE_FIELD_NAMES = {
     "cardano_balances": dict(zip(original_fields_names + ["stake_key"], original_fields_names + ["stake_key"])),
     "ethereum_balances": dict(zip(original_fields_names, original_fields_names)),
-    "binance_balances": dict(zip(original_fields_names + ["pending_balance"], ["HolderAddress", "Balance", "PendingBalanceUpdate"])),
+    "binance_balances": dict(zip(original_fields_names, original_fields_names)),
     "ethereum_lp": dict(zip(original_fields_names, ["address", "token0"])),
     "binance_lp": dict(zip(original_fields_names, ["address", "token0"])),
-    "cardano_lp": dict(zip(original_fields_names + ["stake_key"], ["payment_address", "amount_agix", "stake_address"])),
-    "ethereum_staking": dict(zip(original_fields_names, ["address", "balance"])),
-    "cardano_staking": dict(zip(original_fields_names + ["stake_key"], original_fields_names + ["stake_key"])),
+    "cardano_lp": dict(zip(original_fields_names + ["stake_key"], ["BaseAddress", "Amount", "StakeAddress"])),
+    # "ethereum_staking": dict(zip(original_fields_names, ["address", "balance"])),
+    # "cardano_staking": dict(zip(original_fields_names + ["stake_key"], original_fields_names + ["stake_key"])),
 }
 
 DECIMALS = {

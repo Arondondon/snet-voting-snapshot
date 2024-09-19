@@ -22,7 +22,7 @@ class Balances(Base):
     address = Column("address", VARCHAR(255), nullable=False)
     stake_key = Column("stake_key", VARCHAR(255), nullable=True)
     balance = Column("balance", DECIMAL(65, 0), nullable=False, default=0)
-    stake = Column("stake", BIGINT, nullable=False, default=0)
+    stake = Column("stake", DECIMAL(65, 0), nullable=False, default=0)
     created_on = Column("created_on", TIMESTAMP(timezone=False), nullable=False, server_default=on_create)
     updated_on = Column("updated_on", TIMESTAMP(timezone=False), nullable=False, server_default=on_update)
 
