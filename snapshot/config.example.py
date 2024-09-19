@@ -100,3 +100,5 @@ DECIMALS = {
         "Binance": 8
     }
 }
+
+BATCH_SIZE = 5000

@@ -1,3 +1,5 @@
+from sqlalchemy.exc import SQLAlchemyError
+
 from snapshot.config import FILE_FIELD_NAMES, DECIMALS
 from snapshot.infrastructure.repository.balance_snapshot_repo import BalanceSnapshotRepository
 
@@ -15,7 +17,7 @@ class CSVSave:
 
 class BalanceService:
     def __init__(self):
-        self.id = 0
+        # self.id = 0
         self.repo = BalanceSnapshotRepository()
         # print("id, network, address, stake_key, balance, stake")
 
@@ -57,8 +59,9 @@ class BalanceService:
             self.repo.add_user_balance(network, address, balance, stake, stake_key)
 
             # index += 1
-            self.id += 1
+            # self.id += 1
 
+        self.repo.commit()
         # print()
 
     def convert_balance(self, balance_str: str, network: str) -> int:
